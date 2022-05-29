@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order</title>
+
+    <style>
+        input{
+            /* display: block; */
+            /* margin: auto; */
+            margin-top: 15px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bolder;
+            font-size: 30px;
+            /* background-color: aquamarine; */
+
+        }
+
+        #order_food{
+            margin-top: 20px;
+            padding: 10px 30px 10px 30px;
+
+            background-color: black;
+            color: white;
+            font-weight: bolder;
+            border-radius: 10px;
+        }
+        #order_food:hover{
+            background-color: rgb(188, 56, 80);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <form id="food" >
+
+    <input type="checkbox" name="box">Masala McGrill Burger</input></br>
+
+    <input type="checkbox" name="box">McSpicy Burger</input></br>
+
+    <input type="checkbox" name="box">McSpicy Paneer Burger</input></br>
+
+    <input type="checkbox" name="box">Chicken Maharaja Burger</input></br>
+
+    <input type="checkbox" name="box">Mc Egg Burger</input></br>
+
+    <input type="checkbox" name="box">Veg Pizza McPuff</input></br>
+
+    <input type="checkbox" name="box">Egg Wrap</input></br>
+
+    <input type="checkbox" name="box">Grilled Chicken Wrap</input></br>
+</form> -->
+
+    <label for="">Masala McGrill Burger</label>
+    <input type="checkbox" value="Masala McGrill Burger">
+
+    <label for="">McSpicy Burger</label>
+    <input type="checkbox" value="McSpicy Burger">
+
+    <label>McSpicy Paneer Burger</label>
+    <input type="checkbox" value="McSpicy Paneer Burger">
+
+    <label for="">Chicken Maharaja Burger</label>
+    <input type="checkbox" value="Chicken Maharaja Burger">
+
+    <label for="">Mc Egg Burger</label>
+    <input type="checkbox" value="Mc Egg Burger">
+
+    <label>Veg Pizza McPuff</label>
+    <input type="checkbox" value="Veg Pizza McPuff">
+
+    <label for="">Egg Wrap</label>
+    <input type="checkbox" value="Egg Wrap">
+
+    <label>Grilled Chicken Wrap</label>
+    <input type="checkbox" value="Grilled Chicken Wrap">
+
+
+<button id="order_food" onclick="orderFunc()">Order Food</button>
+
+
+</body>
+
+</html>
+
+<script>
+    let food = document.querySelectorAll("input");
+
+    let images = [
+    "https://img.taste.com.au/R6X05Gvx/taste/2020/01/maccas-burger-157445-1.jpg",
+    "https://live.staticflickr.com/1793/42886147132_aa26ab9979_n.jpg",
+    "https://5.imimg.com/data5/OR/KH/MY-33353830/mcspicy-paneer-burger-500x500.png",
+    "https://5.imimg.com/data5/JP/SF/MY-33353830/mcdonald-veg-maharaja-mac-burger-500x500.png",
+    "https://5.imimg.com/data5/NK/SI/MY-33353830/mcdonald-mcegg-burger-500x500.png",
+    "http://thesplendidlifestyle.com/wp-content/uploads/2017/09/2d5e24f48646693b19ed1652f7857a73.jpg",
+    "https://cleanfoodcrush.com/wp-content/uploads/2021/07/Protein-Packed-Breakfast-Egg-Wrap-Clean-Eating-Recipe.jpg",
+    "https://www.mykitchenescapades.com/wp-content/uploads/2014/07/DSC_0072-225x225.jpg"
+
+
+    ]
+    let menu = [];
+
+    for(let x = 0;x < images.length;x++)
+    {
+        let obj = 
+        {
+            name : food[x].value,
+            image : images[x]
+        }
+        menu.push(obj);
+    }
+    // console.log(menu);
+
+    let foods =[];
+
+    let ordered_food = document.querySelectorAll("input:checked")
+
+    function orderFunc()
+    {
+
+        let myPromise = new Promise(function(resolve,reject){
+
+            menu.forEach(function(ele){
+            for(let x = 0;x < ordered_food.length;x++)
+            {
+                if(ele.name === ordered_food[x].value)
+                {
+                    foods.push(ele);
+
+                }
+               
+            }
+            
+        })
+        // console.log(foods)
+        if(foods.length === 0)
+        {
+            reject();
+        }
+        else
+        {
+            resolve();
+        }
+        })
+        .then(function(res){
+            alert("koi hai")
+
+        })
+        .catch(function(err){
+            console.log("koi nhi")
+
+        })
+
+        
+    }
+</script>
